@@ -12,6 +12,9 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
+    // MARK: Properties
+    
+    // Global Variables & Constants
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
@@ -19,19 +22,27 @@ class ViewController: UIViewController {
     
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
+//    let trivia: [[String : String]] = [
+//        ["Question": "Only female koalas can whistle", "Answer": "False"],
+//        ["Question": "Blue whales are technically whales", "Answer": "True"],
+//        ["Question": "Camels are cannibalistic", "Answer": "False"],
+//        ["Question": "All ducks are birds", "Answer": "True"]
+//    ]
     
+    let questionProvider = QuestionProvider()
+    
+    
+    
+    // IBOutles
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
 
+    
+    // MARK: Life Cycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
@@ -44,6 +55,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    // MARK: Display fucntions
     
     func displayQuestion() {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
@@ -64,6 +79,9 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
+    // MARK: IBActions
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
