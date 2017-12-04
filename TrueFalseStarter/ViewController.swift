@@ -15,20 +15,32 @@ class ViewController: UIViewController {
     // MARK: Properties
     
     // Global Variables & Constants
+    
+    // Set of required questions asked per round
     let questionsPerRound = 4
+    
+    // Variables asked and correction questions per round
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
     
+    // Sound
     var gameSound: SystemSoundID = 0
     
     let questionProvider = QuestionProvider()
     
-    
-    
-    // IBOutles
+    // Labels
     @IBOutlet weak var questionField: UILabel!
+    @IBOutlet weak var answerField: UILabel!
+    
+    // Buttons
+    // FIXME: convert true/false buttons to choice 1,2,3,4 buttons
     @IBOutlet weak var trueButton: UIButton!
+    
+    @IBOutlet weak var choiceTwo: UIButton!
+    @IBOutlet weak var choiceThree: UIButton!
+    
+    
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
