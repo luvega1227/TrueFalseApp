@@ -8,16 +8,6 @@
 
 import GameKit
 
-struct QuestionProvider {
-    let questions: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
-}
-
-
 struct TriviaModel {
     var question: String
     var choices: [Int: String]
@@ -79,6 +69,6 @@ func generateQuestionsToIndex() {
 }
 
 // Selects a question to index and removes it temporarily from the index
-func nextQuestion() {
+func selectNextQuestion() {
     indexOfQuestions = questionsToIndex.remove(at: GKRandomSource.sharedRandom().nextInt(upperBound: questionsToIndex.count))
 }

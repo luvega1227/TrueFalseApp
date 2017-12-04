@@ -17,31 +17,28 @@ class ViewController: UIViewController {
     // Global Variables & Constants
     
     // Set of required questions asked per round
-    let questionsPerRound = 4
+    let questionsPerRound: Int = 4
     
     // Variables asked and correction questions per round
     var questionsAsked = 0
     var correctQuestions = 0
-    var indexOfSelectedQuestion: Int = 0
     
     // Sound
     var gameSound: SystemSoundID = 0
     
-    let questionProvider = QuestionProvider()
-    
     // Labels
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var answerField: UILabel!
+    @IBOutlet weak var messageField: UILabel!
+    
     
     // Buttons
     // FIXME: convert true/false buttons to choice 1,2,3,4 buttons
-    @IBOutlet weak var trueButton: UIButton!
-    
+    @IBOutlet weak var choiceOne: UIButton!
     @IBOutlet weak var choiceTwo: UIButton!
     @IBOutlet weak var choiceThree: UIButton!
+    @IBOutlet weak var choiceFour: UIButton!
     
-    
-    @IBOutlet weak var falseButton: UIButton!
+    // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
     @IBOutlet weak var playAgainButton: UIButton!
     
 
@@ -51,8 +48,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
+        
         // Start game
         playGameStartSound()
+        initialAppSetUp()
         displayQuestion()
     }
 
@@ -61,21 +60,60 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Game Setup
+    func initialAppSetUp() {
+        // Hide
+        messageField.isHidden = true
+        
+        // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
+        playAgainButton.isHidden = true
+        
+        // Show Buttons
+        choiceOne.isHidden = false
+        choiceTwo.isHidden = false
+        choiceThree.isHidden = false
+        choiceFour.isHidden = false
+        
+        // Buttons Corner Radius
+        choiceOne.layer.cornerRadius = 6
+        choiceTwo.layer.cornerRadius = 6
+        choiceThree.layer.cornerRadius = 6
+        choiceFour.layer.cornerRadius = 6
+        
+        // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
+        playAgainButton.layer.cornerRadius = 6
+        
+        // Buttons Alpha color
+        choiceOne.alpha = 1.0
+        choiceTwo.alpha = 1.0
+        choiceThree.alpha = 1.0
+        choiceFour.alpha = 1.0
+        
+        generateQuestionsToIndex()
+    }
     
     
     // MARK: Display fucntions
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionProvider.questions.count)
-        let questionDictionary = questionProvider.questions[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
+       selectNextQuestion()
+        
+        questionField.text = questions[indexOfQuestions].question
+        
+        choiceOne.setTitle(questions[indexOfQuestions].choices[1], for: .normal)
+        choiceTwo.setTitle(questions[indexOfQuestions].choices[2], for: .normal)
+        choiceThree.setTitle(questions[indexOfQuestions].choices[3], for: .normal)
+        choiceFour.setTitle(questions[indexOfQuestions].choices[4], for: .normal)
+        
         playAgainButton.isHidden = true
     }
     
     func displayScore() {
         // Hide the answer buttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+        choiceOne.isHidden = true
+        choiceTwo.isHidden = true
+        choiceThree.isHidden = true
+        choiceFour.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -91,16 +129,28 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        let selectedQuestionDict = questionProvider.questions[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
+        let correctAnswer = questions[indexOfQuestions].answer
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+        if (sender === choiceOne &&  correctAnswer == 1) || (sender === choiceTwo &&  correctAnswer == 2) || (sender === choiceThree &&  correctAnswer == 3) || (sender === choiceFour &&  correctAnswer == 4) {
             correctQuestions += 1
-            questionField.text = "Correct!"
+            
+            messageField.isHidden = false
+            messageField.textColor = UIColor.green
+            messageField.text = "Correct!"
+            
+            choiceOne.alpha = 0.5
+            choiceTwo.alpha = 0.5
+            choiceThree.alpha = 0.5
+            choiceFour.alpha = 0.5
+            
+            sender.alpha = 1.0
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            messageField.isHidden = false
+            messageField.textColor = UIColor.orange
+            messageField.text = "Sorry, wrong answer!"
         }
         
+        // FIXME: nextQuestionAndPlayAgainButton, change text to "next question"
         loadNextRoundWithDelay(seconds: 2)
     }
     
@@ -108,6 +158,9 @@ class ViewController: UIViewController {
         if questionsAsked == questionsPerRound {
             // Game is over
             displayScore()
+            
+            // FIXME: nextQuestionAndPlayAgainButton
+            
         } else {
             // Continue game
             displayQuestion()
@@ -116,8 +169,12 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+        choiceOne.isHidden = false
+        choiceTwo.isHidden = false
+        choiceThree.isHidden = false
+        choiceFour.isHidden = false
+        
+        messageField.isHidden = true
         
         questionsAsked = 0
         correctQuestions = 0
