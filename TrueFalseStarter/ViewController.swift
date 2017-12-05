@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     // Global Variables & Constants
     
     // Set of required questions asked per round
-    let questionsPerRound: Int = 4
+    let questionsPerRound: Int = 5
     
     // Variables asked and correction questions per round
     var questionsAsked = 0
@@ -27,20 +27,16 @@ class ViewController: UIViewController {
     var gameSound: SystemSoundID = 0
     
     // Labels
-    @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var messageField: UILabel!
-    
+    @IBOutlet weak var questionsField: UILabel!
+    @IBOutlet weak var outcomeField: UILabel!
     
     // Buttons
-    // FIXME: convert true/false buttons to choice 1,2,3,4 buttons
     @IBOutlet weak var choiceOne: UIButton!
     @IBOutlet weak var choiceTwo: UIButton!
     @IBOutlet weak var choiceThree: UIButton!
     @IBOutlet weak var choiceFour: UIButton!
-    
-    // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-    
-    @IBOutlet weak var nextQuestionAndPlayAgainButton: UIButton!
+    @IBOutlet weak var nextQuestionB: UIButton!
+    @IBOutlet weak var playAgainB: UIButton!
     
 
     
@@ -63,11 +59,12 @@ class ViewController: UIViewController {
     
     //MARK: Game Setup
     func initialAppSetUp() {
-        // Hide
-        messageField.isHidden = true
+       
+        outcomeField.text = ""
+        //outcomeField.isHidden = false
         
-        // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-        nextQuestionAndPlayAgainButton.isHidden = true
+        nextQuestionB.isHidden = true
+        playAgainB.isHidden = true
         
         // Show Buttons
         choiceOne.isHidden = false
@@ -80,9 +77,9 @@ class ViewController: UIViewController {
         choiceTwo.layer.cornerRadius = 6
         choiceThree.layer.cornerRadius = 6
         choiceFour.layer.cornerRadius = 6
+        nextQuestionB.layer.cornerRadius = 6
+        playAgainB.layer.cornerRadius = 6
         
-        // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-        nextQuestionAndPlayAgainButton.layer.cornerRadius = 6
         
         // Buttons Alpha color
         choiceOne.alpha = 1.0
@@ -97,16 +94,16 @@ class ViewController: UIViewController {
     // MARK: Display fucntions
     
     func displayQuestion() {
-       selectNextQuestion()
+       selectNextQuestions()
         
-        questionField.text = questions[indexOfQuestions].question
+        questionsField.text = questions[indexOfQuestions].question
         
         choiceOne.setTitle(questions[indexOfQuestions].choices[1], for: .normal)
         choiceTwo.setTitle(questions[indexOfQuestions].choices[2], for: .normal)
         choiceThree.setTitle(questions[indexOfQuestions].choices[3], for: .normal)
         choiceFour.setTitle(questions[indexOfQuestions].choices[4], for: .normal)
         
-        nextQuestionAndPlayAgainButton.isHidden = true
+        playAgainB.isHidden = true
     }
     
     func displayScore() {
@@ -116,11 +113,9 @@ class ViewController: UIViewController {
         choiceThree.isHidden = true
         choiceFour.isHidden = true
         
-        // Display play again button
-        nextQuestionAndPlayAgainButton.isHidden = false
-        nextQuestionAndPlayAgainButton.setTitle("Play Again?", for: .normal)
+        playAgainB.isHidden = false
         
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
     
@@ -134,12 +129,12 @@ class ViewController: UIViewController {
         
         let correctAnswer = questions[indexOfQuestions].answer
         
-        if (sender === choiceOne &&  correctAnswer == 1) || (sender === choiceTwo &&  correctAnswer == 2) || (sender === choiceThree &&  correctAnswer == 3) || (sender === choiceFour &&  correctAnswer == 4) {
+        if (sender === choiceOne && correctAnswer == 1) || (sender === choiceTwo && correctAnswer == 2) || (sender === choiceThree && correctAnswer == 3) || (sender === choiceFour && correctAnswer == 4) {
             correctQuestions += 1
             
-            messageField.isHidden = false
-            messageField.textColor = UIColor.green
-            messageField.text = "Correct!"
+            outcomeField.isHidden = false
+            outcomeField.textColor = UIColor.green
+            outcomeField.text = "Correct!"
             
             choiceOne.alpha = 0.5
             choiceTwo.alpha = 0.5
@@ -148,17 +143,11 @@ class ViewController: UIViewController {
             
             sender.alpha = 1.0
         } else {
-            messageField.isHidden = false
-            messageField.textColor = UIColor.orange
-            messageField.text = "Sorry, wrong answer!"
+            outcomeField.isHidden = false
+            outcomeField.textColor = UIColor.orange
+            outcomeField.text = "Sorry, wrong answer!"
         }
-        
-        // FIXME: nextQuestionAndPlayAgainButton, change text to "next question"
-        
-        nextQuestionAndPlayAgainButton.setTitle("Next Question", for: .normal)
-        nextQuestionAndPlayAgainButton.isHidden = false
-        
-        //loadNextRoundWithDelay(seconds: 2)
+        nextQuestionB.isHidden = false
     }
     
     func nextRound() {
@@ -166,30 +155,35 @@ class ViewController: UIViewController {
             // Game is over
             displayScore()
             
-            // FIXME: nextQuestionAndPlayAgainButton
-            nextQuestionAndPlayAgainButton.setTitle("Play Again?", for: .normal)
-            nextQuestionAndPlayAgainButton.isHidden = false
-            
-            
+            nextQuestionB.isHidden = true
         } else {
             // Continue game
             displayQuestion()
         }
     }
     
-    @IBAction func playAgain() {
+    
+    @IBAction func playAgains() {
         // Show the answer buttons
         choiceOne.isHidden = false
         choiceTwo.isHidden = false
         choiceThree.isHidden = false
         choiceFour.isHidden = false
         
-        messageField.isHidden = true
+        outcomeField.isHidden = true
         
         questionsAsked = 0
         correctQuestions = 0
+        
         nextRound()
     }
+    
+    @IBAction func nextQuestionA() {
+        initialAppSetUp()
+        
+        return loadNextRoundWithDelay(seconds: 0)
+    }
+    
     
 
     
