@@ -51,6 +51,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="choiceOne Button"/>
+                                                <connections>
+                                                    <action selector="checkingAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R8R-ww-VDU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bH1-MA-IsO" userLabel="choiceTwo">
                                                 <rect key="frame" x="0.0" y="237" width="300" height="49"/>
@@ -60,6 +63,7 @@
                                                 <state key="normal" title="choiceTwo Button"/>
                                                 <connections>
                                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZZR-NU-Qor"/>
+                                                    <action selector="checkingAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zVY-nD-knb"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNW-sC-PKR" userLabel="choiceThree">
@@ -70,6 +74,7 @@
                                                 <state key="normal" title="choiceThree Button"/>
                                                 <connections>
                                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2B-58-D50"/>
+                                                    <action selector="checkingAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dn3-gP-PQP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -83,6 +88,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="choiceFour Button"/>
+                                                <connections>
+                                                    <action selector="checkingAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q02-g8-Izp"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bE2-kx-bCS">
                                                 <rect key="frame" x="0.0" y="95.5" width="300" height="53"/>
@@ -94,7 +102,8 @@
                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="nextQuestionAndPlayAgain Button"/>
                                                         <connections>
-                                                            <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="K7O-QT-oTD"/>
+                                                            <action selector="checkingAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rfD-wF-bBX"/>
+                                                            <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="LDy-IL-DJF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -119,7 +128,7 @@
                         <outlet property="choiceThree" destination="rNW-sC-PKR" id="23t-SO-QH8"/>
                         <outlet property="choiceTwo" destination="bH1-MA-IsO" id="9MY-sC-wet"/>
                         <outlet property="messageField" destination="gfh-hh-sYg" id="xoJ-yI-pJf"/>
-                        <outlet property="playAgainButton" destination="Csb-iu-1J8" id="fJy-53-EL4"/>
+                        <outlet property="nextQuestionAndPlayAgainButton" destination="Csb-iu-1J8" id="cui-6v-zrM"/>
                         <outlet property="questionField" destination="I3V-ih-1Ky" id="7UI-o2-ATi"/>
                     </connections>
                 </viewController>

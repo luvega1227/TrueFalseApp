@@ -39,7 +39,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var choiceFour: UIButton!
     
     // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-    @IBOutlet weak var playAgainButton: UIButton!
+    
+    @IBOutlet weak var nextQuestionAndPlayAgainButton: UIButton!
     
 
     
@@ -66,7 +67,7 @@ class ViewController: UIViewController {
         messageField.isHidden = true
         
         // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-        playAgainButton.isHidden = true
+        nextQuestionAndPlayAgainButton.isHidden = true
         
         // Show Buttons
         choiceOne.isHidden = false
@@ -81,7 +82,7 @@ class ViewController: UIViewController {
         choiceFour.layer.cornerRadius = 6
         
         // FIXME: Convert playAgainButton to a nextQuestionAndPlayAgainButton
-        playAgainButton.layer.cornerRadius = 6
+        nextQuestionAndPlayAgainButton.layer.cornerRadius = 6
         
         // Buttons Alpha color
         choiceOne.alpha = 1.0
@@ -105,7 +106,7 @@ class ViewController: UIViewController {
         choiceThree.setTitle(questions[indexOfQuestions].choices[3], for: .normal)
         choiceFour.setTitle(questions[indexOfQuestions].choices[4], for: .normal)
         
-        playAgainButton.isHidden = true
+        nextQuestionAndPlayAgainButton.isHidden = true
     }
     
     func displayScore() {
@@ -116,7 +117,8 @@ class ViewController: UIViewController {
         choiceFour.isHidden = true
         
         // Display play again button
-        playAgainButton.isHidden = false
+        nextQuestionAndPlayAgainButton.isHidden = false
+        nextQuestionAndPlayAgainButton.setTitle("Play Again?", for: .normal)
         
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
@@ -125,7 +127,8 @@ class ViewController: UIViewController {
     
     
     // MARK: IBActions
-    @IBAction func checkAnswer(_ sender: UIButton) {
+
+    @IBAction func checkingAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
         
@@ -151,7 +154,11 @@ class ViewController: UIViewController {
         }
         
         // FIXME: nextQuestionAndPlayAgainButton, change text to "next question"
-        loadNextRoundWithDelay(seconds: 2)
+        
+        nextQuestionAndPlayAgainButton.setTitle("Next Question", for: .normal)
+        nextQuestionAndPlayAgainButton.isHidden = false
+        
+        //loadNextRoundWithDelay(seconds: 2)
     }
     
     func nextRound() {
@@ -160,6 +167,9 @@ class ViewController: UIViewController {
             displayScore()
             
             // FIXME: nextQuestionAndPlayAgainButton
+            nextQuestionAndPlayAgainButton.setTitle("Play Again?", for: .normal)
+            nextQuestionAndPlayAgainButton.isHidden = false
+            
             
         } else {
             // Continue game
