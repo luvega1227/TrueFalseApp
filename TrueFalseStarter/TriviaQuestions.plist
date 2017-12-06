@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>question</key>
+		<string>Which is the only planet in our solar system that rotates clockwise?</string>
+		<key>answer</key>
+		<string>Venus</string>
+		<key>choice01</key>
+		<string>Uranus</string>
+		<key>choice02</key>
+		<string>Jupiter</string>
+		<key>choice03</key>
+		<string>Saturn</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>How many noses do slugs have?</string>
+		<key>answer</key>
+		<string>4</string>
+		<key>choice01</key>
+		<string>12</string>
+		<key>choice02</key>
+		<string>8</string>
+		<key>choice03</key>
+		<string>22</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>How many times to humans laugh per day on average?</string>
+		<key>answer</key>
+		<string>15</string>
+		<key>choice01</key>
+		<string>31</string>
+		<key>choice02</key>
+		<string>7</string>
+		<key>choice03</key>
+		<string>22</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What kind of professional is most frequently late for appointments?</string>
+		<key>answer</key>
+		<string>Doctors</string>
+		<key>choice01</key>
+		<string>Dentists</string>
+		<key>choice02</key>
+		<string>Optomitrists</string>
+		<key>choice03</key>
+		<string>Psychologists</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What animal is illegal to transport in a taxi cab without a chaperone in Montana?</string>
+		<key>answer</key>
+		<string>Sheep</string>
+		<key>choice01</key>
+		<string>Goat</string>
+		<key>choice02</key>
+		<string>Leopard</string>
+		<key>choice03</key>
+		<string>Bobcat</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What was the original ice cream cone meant to carry?</string>
+		<key>answer</key>
+		<string>Flowers</string>
+		<key>choice01</key>
+		<string>Candies</string>
+		<key>choice02</key>
+		<string>Popcorn</string>
+		<key>choice03</key>
+		<string>Ice cream</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>How old was the youngest Pope ever to hold the position?</string>
+		<key>answer</key>
+		<string>11</string>
+		<key>choice01</key>
+		<string>9</string>
+		<key>choice02</key>
+		<string>26</string>
+		<key>choice03</key>
+		<string>43</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What is the official name for a person that loves dogs with incredible enthusiasm?</string>
+		<key>answer</key>
+		<string>Cynophile</string>
+		<key>choice01</key>
+		<string>Arctophile</string>
+		<key>choice02</key>
+		<string>Ailurophile</string>
+		<key>choice03</key>
+		<string>Pluviophile</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>When hippos are upset, their sweat turns what color?</string>
+		<key>answer</key>
+		<string>Red</string>
+		<key>choice01</key>
+		<string>Brown</string>
+		<key>choice02</key>
+		<string>Greenish</string>
+		<key>choice03</key>
+		<string>Purple</string>
+	</dict>
+	<dict>
+		<key>question</key>
+		<string>What is the official name for the fear of being tickled by feathers?</string>
+		<key>answer</key>
+		<string>Pteronophobia</string>
+		<key>choice01</key>
+		<string>Kynophobia</string>
+		<key>choice02</key>
+		<string>Botanophobia</string>
+		<key>choice03</key>
+		<string>Chorophobia</string>
+	</dict>
+</array>
+</plist>
