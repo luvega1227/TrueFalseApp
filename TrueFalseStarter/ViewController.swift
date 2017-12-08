@@ -52,7 +52,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
         
         // Start game
         playGameStartSound()
@@ -67,6 +66,8 @@ class ViewController: UIViewController {
     
     //MARK: Game Setup
     func initialAppSetUp() {
+        
+        timerLabel.isHidden = false
         
         // Empty Display space
         outcomeField.text = ""
@@ -83,6 +84,7 @@ class ViewController: UIViewController {
         choiceTwo.isHidden = false
         choiceThree.isHidden = false
         choiceFour.isHidden = false
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
 
         
@@ -116,8 +118,10 @@ class ViewController: UIViewController {
     func displayQuestion() {
         selectNextQuestions()
         
+        // Question Field label displaying question
         questionsField.text = questions[indexOfQuestions].question
         
+        // Display choices
         choiceOne.setTitle(questions[indexOfQuestions].choices[1], for: .normal)
         choiceTwo.setTitle(questions[indexOfQuestions].choices[2], for: .normal)
         choiceThree.setTitle(questions[indexOfQuestions].choices[3], for: .normal)
@@ -125,11 +129,12 @@ class ViewController: UIViewController {
         
         playAgainB.isHidden = true
         
+        // Timer starts over
         resetTimer()
     }
     
     func displayScore() {
-        // Hide the answer buttons
+        // Hide the answer buttons and labels
         choiceOne.isHidden = true
         choiceTwo.isHidden = true
         choiceThree.isHidden = true
@@ -139,48 +144,67 @@ class ViewController: UIViewController {
         // Diplsay play again button
         playAgainB.isHidden = false
         
-        
-        
         // Text Display when you finish trivia
         questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
     }
     
     
     
     // MARK: IBActions
     
+    
+    // User presses a choice button
     @IBAction func checkingAnswer(_ sender: UIButton) {
+        
         // Increment the questions asked counter
         questionsAsked += 1
-        timerLabel.isHidden = true
         
+        // Hides timer
+        timerLabel.isHidden = true
+        time = 15
+
+        
+        // The correct answer from the Trivia Model
         let correctAnswer = questions[indexOfQuestions].answer
         
+        // If user matches choice# and correctAnswer...
         if (sender === choiceOne && correctAnswer == 1) || (sender === choiceTwo && correctAnswer == 2) || (sender === choiceThree && correctAnswer == 3) || (sender === choiceFour && correctAnswer == 4) {
             correctQuestions += 1
             
-            
             emptySpace.isHidden = true
+            
+            // Display "Correct!"
             outcomeField.isHidden = false
             outcomeField.textColor = UIColor.green
             outcomeField.text = "Correct!"
             
+            // shadow buttons
             choiceOne.alpha = 0.5
             choiceTwo.alpha = 0.5
             choiceThree.alpha = 0.5
             choiceFour.alpha = 0.5
             
+//            // Turn buttons off
+//            choiceOne.isEnabled = false
+//            choiceTwo.isEnabled = false
+//            choiceThree.isEnabled = false
+//            choiceFour.isEnabled = false
+            
+            // highlight user choice
             sender.alpha = 1.0
     
         } else {
+            
             emptySpace.isHidden = true
+            
+            // Display "Wrong Answer!"
             outcomeField.isHidden = false
             outcomeField.textColor = UIColor.orange
             outcomeField.text = "Sorry, Wrong Answer! \n (Answer in Orange)"
             
             
                 // Highlighting the answer when user selected the wrong answer
+            
             
                 //choiceOne
                 if ((choiceOne != nil) && correctAnswer == 1) {
@@ -190,6 +214,7 @@ class ViewController: UIViewController {
                         choiceOne.alpha = 0.5
                 }
             
+            
                 //choiceTwo
                 if ((choiceTwo != nil) && correctAnswer == 2) {
                     choiceTwo.alpha = 1
@@ -197,6 +222,7 @@ class ViewController: UIViewController {
                 } else {
                         choiceTwo.alpha = 0.5
                 }
+            
             
                 //choiceThree
                 if ((choiceThree != nil) && correctAnswer == 3) {
@@ -206,6 +232,7 @@ class ViewController: UIViewController {
                     choiceThree.alpha = 0.5
                 }
             
+            
                 //choiceFour
                 if ((choiceFour != nil) && correctAnswer == 4) {
                     choiceFour.alpha = 1
@@ -214,63 +241,105 @@ class ViewController: UIViewController {
                         choiceFour.alpha = 0.5
                 }
             
-            
         }
+        
+        // Next Question Button Appears
         nextQuestionB.isHidden = false
     }
     
+    
+    // Next Round function
     func nextRound() {
+        
+        // When questions are reached
         if questionsAsked == questionsPerRound {
+            
             // Game is over
             displayScore()
             
             nextQuestionB.isHidden = true
         } else {
+            
             // Continue game
             displayQuestion()
         }
     }
     
     
+    // When user presses "Play Again" button...
     @IBAction func playAgains() {
+        
         // Show the answer buttons
         choiceOne.isHidden = false
         choiceTwo.isHidden = false
         choiceThree.isHidden = false
         choiceFour.isHidden = false
         
-        
+        // Reset
         questionsAsked = 0
         correctQuestions = 0
         
+        // call next round
         nextRound()
+        
+        // call rest timer
+        resetTimer()
     }
     
+    // When user presses "Next Question" button...
     @IBAction func nextQuestionA() {
+        
+        // call...
         initialAppSetUp()
         
         return loadNextRoundWithDelay(seconds: 0)
     }
     
+    
+    // MARK: Timer functions
+    
+    // Display timer function
     @objc func displayTimer() {
         
         time -= 1
         timerLabel.text = "\(time)"
         
+        // 5...0 time label turns red
         if time <= 5 {
             timerLabel.textColor = UIColor.red
         }
         
-        if time == 0 {
-            questionsField.text = "Time's Up!"
-            questionsField.textColor = UIColor.red
-            questionsAsked += 1
+        if time == 15 {
+            
             timerLabel.isHidden = true
+
+        }
+        
+        if time == 0 {
+            
             questionsAsked += 1
-            loadNextRoundWithDelay(seconds: 1)
+            
+            // Display "Time's Up!"
+            outcomeField.text = "Time's Up!"
+            outcomeField.textColor = UIColor.yellow
+            
+            timerLabel.isHidden = true
+            
+            emptySpace.isHidden = true
+            
+            
+            // Display "Next Question" button
+            nextQuestionB.isHidden = false
+            
         }
     }
     
+    // Stops time function
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    // Resets time function
     func resetTimer() {
         time = 15
         timerLabel.text = "\(time)"
@@ -284,8 +353,10 @@ class ViewController: UIViewController {
     // MARK: Helper Methods
     
     func loadNextRoundWithDelay(seconds: Int) {
+        
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
+        
         // Calculates a time value to execute the method given current time and delay
         let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
         
