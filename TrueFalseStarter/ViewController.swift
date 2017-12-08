@@ -92,6 +92,12 @@ class ViewController: UIViewController {
         choiceThree.alpha = 1.0
         choiceFour.alpha = 1.0
         
+        // Buttons Alpha color
+        choiceOne.backgroundColor = UIColor.blue
+        choiceTwo.backgroundColor = UIColor.blue
+        choiceThree.backgroundColor = UIColor.blue
+        choiceFour.backgroundColor = UIColor.blue
+        
         generateQuestionsToIndex()
     }
     
@@ -120,6 +126,7 @@ class ViewController: UIViewController {
         
         playAgainB.isHidden = false
         
+        // Text Display when you finish trivia
         questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
@@ -137,6 +144,7 @@ class ViewController: UIViewController {
         if (sender === choiceOne && correctAnswer == 1) || (sender === choiceTwo && correctAnswer == 2) || (sender === choiceThree && correctAnswer == 3) || (sender === choiceFour && correctAnswer == 4) {
             correctQuestions += 1
             
+            
             emptySpace.isHidden = true
             outcomeField.isHidden = false
             outcomeField.textColor = UIColor.green
@@ -148,11 +156,49 @@ class ViewController: UIViewController {
             choiceFour.alpha = 0.5
             
             sender.alpha = 1.0
+    
         } else {
             emptySpace.isHidden = true
             outcomeField.isHidden = false
             outcomeField.textColor = UIColor.orange
-            outcomeField.text = "Sorry, wrong answer!"
+            outcomeField.text = "Sorry, Wrong Answer! \n (Answer in Orange)"
+            
+            
+                // Highlighting the answer when user selected the wrong answer
+            
+                //choiceOne
+                if ((choiceOne != nil) && correctAnswer == 1) {
+                    choiceOne.alpha = 1
+                    choiceOne.backgroundColor = UIColor.orange
+                } else {
+                        choiceOne.alpha = 0.5
+                }
+            
+                //choiceTwo
+                if ((choiceTwo != nil) && correctAnswer == 2) {
+                    choiceTwo.alpha = 1
+                    choiceTwo.backgroundColor = UIColor.orange
+                } else {
+                        choiceTwo.alpha = 0.5
+                }
+            
+                //choiceThree
+                if ((choiceThree != nil) && correctAnswer == 3) {
+                    choiceThree.alpha = 1
+                    choiceThree.backgroundColor = UIColor.orange
+                } else {
+                    choiceThree.alpha = 0.5
+                }
+            
+                //choiceFour
+                if ((choiceFour != nil) && correctAnswer == 4) {
+                    choiceFour.alpha = 1
+                    choiceFour.backgroundColor = UIColor.orange
+                } else {
+                        choiceFour.alpha = 0.5
+                }
+            
+            
         }
         nextQuestionB.isHidden = false
     }
