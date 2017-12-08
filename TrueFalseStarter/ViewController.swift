@@ -39,6 +39,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextQuestionB: UIButton!
     @IBOutlet weak var playAgainB: UIButton!
     
+    // Timer
+    var timer: Timer?
+    var time = 15
+    @IBOutlet weak var timerLabel: UILabel!
+    
+    
     
     
     // MARK: Life Cycle Methods
@@ -46,6 +52,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
         
         // Start game
         playGameStartSound()
@@ -76,6 +83,8 @@ class ViewController: UIViewController {
         choiceTwo.isHidden = false
         choiceThree.isHidden = false
         choiceFour.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
+
         
         // Buttons Corner Radius
         choiceOne.layer.cornerRadius = 6
@@ -115,6 +124,8 @@ class ViewController: UIViewController {
         choiceFour.setTitle(questions[indexOfQuestions].choices[4], for: .normal)
         
         playAgainB.isHidden = true
+        
+        resetTimer()
     }
     
     func displayScore() {
@@ -123,8 +134,12 @@ class ViewController: UIViewController {
         choiceTwo.isHidden = true
         choiceThree.isHidden = true
         choiceFour.isHidden = true
+        timerLabel.isHidden = true
         
+        // Diplsay play again button
         playAgainB.isHidden = false
+        
+        
         
         // Text Display when you finish trivia
         questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
@@ -138,6 +153,7 @@ class ViewController: UIViewController {
     @IBAction func checkingAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
+        timerLabel.isHidden = true
         
         let correctAnswer = questions[indexOfQuestions].answer
         
@@ -234,6 +250,32 @@ class ViewController: UIViewController {
         initialAppSetUp()
         
         return loadNextRoundWithDelay(seconds: 0)
+    }
+    
+    @objc func displayTimer() {
+        
+        time -= 1
+        timerLabel.text = "\(time)"
+        
+        if time <= 5 {
+            timerLabel.textColor = UIColor.red
+        }
+        
+        if time == 0 {
+            questionsField.text = "Time's Up!"
+            questionsField.textColor = UIColor.red
+            questionsAsked += 1
+            timerLabel.isHidden = true
+            questionsAsked += 1
+            loadNextRoundWithDelay(seconds: 1)
+        }
+    }
+    
+    func resetTimer() {
+        time = 15
+        timerLabel.text = "\(time)"
+        timerLabel.textColor = UIColor.white
+        questionsField.textColor = UIColor.white
     }
     
     
