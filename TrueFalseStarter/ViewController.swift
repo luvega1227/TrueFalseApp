@@ -24,7 +24,8 @@ class ViewController: UIViewController {
     var correctQuestions = 0
     
     // Sound
-    var gameSound: SystemSoundID = 0
+    let soundCoordinator = SoundCoordinator()
+//    var gameSound: SystemSoundID = 0
     
     // Labels
     @IBOutlet weak var questionsField: UILabel!
@@ -52,10 +53,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadGameStartSound()
+//        loadGameStartSound()
         
         // Start game
-        playGameStartSound()
+//        playGameStartSound()
+        soundCoordinator.playGameStartSound()
         initialAppSetUp()
         displayQuestion()
     }
@@ -183,6 +185,9 @@ class ViewController: UIViewController {
             outcomeField.textColor = UIColor.green
             outcomeField.text = "Correct!"
             
+            // Play correct sound
+            soundCoordinator.playCorrectAnswerSound()
+            
             // shadow buttons
             choiceOne.alpha = 0.5
             choiceTwo.alpha = 0.5
@@ -197,16 +202,28 @@ class ViewController: UIViewController {
             
             // highlight user choice
             sender.alpha = 1.0
-            sender.isEnabled = true
+            sender.setTitleColor(UIColor.white, for: UIControlState.normal)
+            
+            stopTimer()
     
         } else {
             
             emptySpace.isHidden = true
+            stopTimer()
+            
+            // Turn buttons off
+            choiceOne.isEnabled = false
+            choiceTwo.isEnabled = false
+            choiceThree.isEnabled = false
+            choiceFour.isEnabled = false
             
             // Display "Wrong Answer!"
             outcomeField.isHidden = false
             outcomeField.textColor = UIColor.orange
             outcomeField.text = "Sorry, Wrong Answer! \n (Answer in Orange)"
+            
+            // Play "Wrong Answer" sound
+            soundCoordinator.playIncorrectAnswerSound()
             
             
                 // Highlighting the answer when user selected the wrong answer
@@ -216,9 +233,9 @@ class ViewController: UIViewController {
                 if ((choiceOne != nil) && correctAnswer == 1) {
                     choiceOne.alpha = 1
                     choiceOne.backgroundColor = UIColor.orange
+                    choiceOne.setTitleColor(UIColor.white, for: UIControlState.normal)
                 } else {
                         choiceOne.alpha = 0.5
-                        choiceOne.isEnabled = true
                 }
             
             
@@ -226,9 +243,9 @@ class ViewController: UIViewController {
                 if ((choiceTwo != nil) && correctAnswer == 2) {
                     choiceTwo.alpha = 1
                     choiceTwo.backgroundColor = UIColor.orange
+                    choiceTwo.setTitleColor(UIColor.white, for: UIControlState.normal)
                 } else {
                         choiceTwo.alpha = 0.5
-                        choiceTwo.isEnabled = true
                 }
             
             
@@ -236,9 +253,9 @@ class ViewController: UIViewController {
                 if ((choiceThree != nil) && correctAnswer == 3) {
                     choiceThree.alpha = 1
                     choiceThree.backgroundColor = UIColor.orange
+                    choiceThree.setTitleColor(UIColor.white, for: UIControlState.normal)
                 } else {
                     choiceThree.alpha = 0.5
-                    choiceThree.isEnabled = true
                 }
             
             
@@ -246,9 +263,9 @@ class ViewController: UIViewController {
                 if ((choiceFour != nil) && correctAnswer == 4) {
                     choiceFour.alpha = 1
                     choiceFour.backgroundColor = UIColor.orange
+                    choiceFour.setTitleColor(UIColor.white, for: UIControlState.normal)
                 } else {
                         choiceFour.alpha = 0.5
-                        choiceFour.isEnabled = true
                 }
             
         }
@@ -289,6 +306,9 @@ class ViewController: UIViewController {
         // Reset
         questionsAsked = 0
         correctQuestions = 0
+        
+        // Game start sound
+        soundCoordinator.playGameStartSound()
         
         // call next round
         nextRound()
@@ -331,22 +351,26 @@ class ViewController: UIViewController {
             
             questionsAsked += 1
             
-            // Display "Time's Up!"
-            outcomeField.text = "Time's Up! \n (Answer in Orange)"
-            outcomeField.textColor = UIColor.yellow
-            
-            timerLabel.isHidden = true
-            
-            emptySpace.isHidden = true
-            
-            // Display "Next Question" button
-            nextQuestionB.isHidden = false
-            
             // Turn buttons off
             choiceOne.isEnabled = false
             choiceTwo.isEnabled = false
             choiceThree.isEnabled = false
             choiceFour.isEnabled = false
+            
+            // Display "Time's Up!"
+            outcomeField.text = "Time's Up! \n (Answer in Orange)"
+            outcomeField.textColor = UIColor.yellow
+            
+            // Play "Wrong Answer" sound
+            soundCoordinator.playIncorrectAnswerSound()
+            
+            // Hide labels
+            timerLabel.isHidden = true
+            emptySpace.isHidden = true
+            
+            // Display "Next Question" button
+            nextQuestionB.isHidden = false
+            
             
             // Highlighting the answer when user selected the wrong answer
             
@@ -356,9 +380,9 @@ class ViewController: UIViewController {
             if ((choiceOne != nil) && correctAnswer == 1) {
                 choiceOne.alpha = 1
                 choiceOne.backgroundColor = UIColor.orange
+                choiceOne.setTitleColor(UIColor.white, for: UIControlState.normal)
             } else {
                 choiceOne.alpha = 0.5
-                choiceOne.isEnabled = true
             }
             
             
@@ -366,9 +390,9 @@ class ViewController: UIViewController {
             if ((choiceTwo != nil) && correctAnswer == 2) {
                 choiceTwo.alpha = 1
                 choiceTwo.backgroundColor = UIColor.orange
+                choiceTwo.setTitleColor(UIColor.white, for: UIControlState.normal)
             } else {
                 choiceTwo.alpha = 0.5
-                choiceTwo.isEnabled = true
             }
             
             
@@ -376,9 +400,9 @@ class ViewController: UIViewController {
             if ((choiceThree != nil) && correctAnswer == 3) {
                 choiceThree.alpha = 1
                 choiceThree.backgroundColor = UIColor.orange
+                choiceThree.setTitleColor(UIColor.white, for: UIControlState.normal)
             } else {
                 choiceThree.alpha = 0.5
-                choiceThree.isEnabled = true
             }
             
             
@@ -386,9 +410,9 @@ class ViewController: UIViewController {
             if ((choiceFour != nil) && correctAnswer == 4) {
                 choiceFour.alpha = 1
                 choiceFour.backgroundColor = UIColor.orange
+                choiceFour.setTitleColor(UIColor.white, for: UIControlState.normal)
             } else {
                 choiceFour.alpha = 0.5
-                choiceFour.isEnabled = true
             }
             
         }
@@ -411,7 +435,6 @@ class ViewController: UIViewController {
     
     
     
-    
     // MARK: Helper Methods
     
     func loadNextRoundWithDelay(seconds: Int) {
@@ -427,15 +450,16 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
+ 
     
-    func loadGameStartSound() {
-        let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
-    }
-    
-    func playGameStartSound() {
-        AudioServicesPlaySystemSound(gameSound)
-    }
+//    func loadGameStartSound() {
+//        let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
+//        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+//        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
+//    }
+//
+//    func playGameStartSound() {
+//        AudioServicesPlaySystemSound(gameSound)
+//    }
 }
 
