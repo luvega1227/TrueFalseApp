@@ -47,6 +47,7 @@ class ViewController: UIViewController {
     
     
     
+    
     // MARK: Life Cycle Methods
     
     override func viewDidLoad() {
@@ -67,7 +68,10 @@ class ViewController: UIViewController {
     //MARK: Game Setup
     func initialAppSetUp() {
         
+        // Timer
+        resetTimer()
         timerLabel.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
         
         // Empty Display space
         outcomeField.text = ""
@@ -79,14 +83,17 @@ class ViewController: UIViewController {
         nextQuestionB.isHidden = true
         playAgainB.isHidden = true
         
+        // Turn buttons on
+        choiceOne.isEnabled = true
+        choiceTwo.isEnabled = true
+        choiceThree.isEnabled = true
+        choiceFour.isEnabled = true
+        
         // Show Buttons
         choiceOne.isHidden = false
         choiceTwo.isHidden = false
         choiceThree.isHidden = false
         choiceFour.isHidden = false
-        
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayTimer), userInfo: nil, repeats: true)
-
         
         // Buttons Corner Radius
         choiceOne.layer.cornerRadius = 6
@@ -129,8 +136,6 @@ class ViewController: UIViewController {
         
         playAgainB.isHidden = true
         
-        // Timer starts over
-        resetTimer()
     }
     
     func displayScore() {
@@ -184,14 +189,15 @@ class ViewController: UIViewController {
             choiceThree.alpha = 0.5
             choiceFour.alpha = 0.5
             
-//            // Turn buttons off
-//            choiceOne.isEnabled = false
-//            choiceTwo.isEnabled = false
-//            choiceThree.isEnabled = false
-//            choiceFour.isEnabled = false
+            // Turn buttons off
+            choiceOne.isEnabled = false
+            choiceTwo.isEnabled = false
+            choiceThree.isEnabled = false
+            choiceFour.isEnabled = false
             
             // highlight user choice
             sender.alpha = 1.0
+            sender.isEnabled = true
     
         } else {
             
@@ -212,6 +218,7 @@ class ViewController: UIViewController {
                     choiceOne.backgroundColor = UIColor.orange
                 } else {
                         choiceOne.alpha = 0.5
+                        choiceOne.isEnabled = true
                 }
             
             
@@ -221,6 +228,7 @@ class ViewController: UIViewController {
                     choiceTwo.backgroundColor = UIColor.orange
                 } else {
                         choiceTwo.alpha = 0.5
+                        choiceTwo.isEnabled = true
                 }
             
             
@@ -230,6 +238,7 @@ class ViewController: UIViewController {
                     choiceThree.backgroundColor = UIColor.orange
                 } else {
                     choiceThree.alpha = 0.5
+                    choiceThree.isEnabled = true
                 }
             
             
@@ -239,6 +248,7 @@ class ViewController: UIViewController {
                     choiceFour.backgroundColor = UIColor.orange
                 } else {
                         choiceFour.alpha = 0.5
+                        choiceFour.isEnabled = true
                 }
             
         }
@@ -262,6 +272,7 @@ class ViewController: UIViewController {
             
             // Continue game
             displayQuestion()
+            
         }
     }
     
@@ -282,8 +293,8 @@ class ViewController: UIViewController {
         // call next round
         nextRound()
         
-        // call rest timer
-        resetTimer()
+        // call app setup
+        initialAppSetUp()
     }
     
     // When user presses "Next Question" button...
@@ -293,6 +304,7 @@ class ViewController: UIViewController {
         initialAppSetUp()
         
         return loadNextRoundWithDelay(seconds: 0)
+        
     }
     
     
@@ -320,16 +332,64 @@ class ViewController: UIViewController {
             questionsAsked += 1
             
             // Display "Time's Up!"
-            outcomeField.text = "Time's Up!"
+            outcomeField.text = "Time's Up! \n (Answer in Orange)"
             outcomeField.textColor = UIColor.yellow
             
             timerLabel.isHidden = true
             
             emptySpace.isHidden = true
             
-            
             // Display "Next Question" button
             nextQuestionB.isHidden = false
+            
+            // Turn buttons off
+            choiceOne.isEnabled = false
+            choiceTwo.isEnabled = false
+            choiceThree.isEnabled = false
+            choiceFour.isEnabled = false
+            
+            // Highlighting the answer when user selected the wrong answer
+            
+             let correctAnswer = questions[indexOfQuestions].answer
+            
+            //choiceOne
+            if ((choiceOne != nil) && correctAnswer == 1) {
+                choiceOne.alpha = 1
+                choiceOne.backgroundColor = UIColor.orange
+            } else {
+                choiceOne.alpha = 0.5
+                choiceOne.isEnabled = true
+            }
+            
+            
+            //choiceTwo
+            if ((choiceTwo != nil) && correctAnswer == 2) {
+                choiceTwo.alpha = 1
+                choiceTwo.backgroundColor = UIColor.orange
+            } else {
+                choiceTwo.alpha = 0.5
+                choiceTwo.isEnabled = true
+            }
+            
+            
+            //choiceThree
+            if ((choiceThree != nil) && correctAnswer == 3) {
+                choiceThree.alpha = 1
+                choiceThree.backgroundColor = UIColor.orange
+            } else {
+                choiceThree.alpha = 0.5
+                choiceThree.isEnabled = true
+            }
+            
+            
+            //choiceFour
+            if ((choiceFour != nil) && correctAnswer == 4) {
+                choiceFour.alpha = 1
+                choiceFour.backgroundColor = UIColor.orange
+            } else {
+                choiceFour.alpha = 0.5
+                choiceFour.isEnabled = true
+            }
             
         }
     }
@@ -341,6 +401,8 @@ class ViewController: UIViewController {
     
     // Resets time function
     func resetTimer() {
+        
+        timer?.invalidate()
         time = 15
         timerLabel.text = "\(time)"
         timerLabel.textColor = UIColor.white
