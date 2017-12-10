@@ -10,6 +10,8 @@ import UIKit
 
 class OptionQuestionsVC: UIViewController {
     
+    //FIXME: Stop timer when user enters this screen
+    
     // MARK: Outles
     @IBOutlet weak var emptySpace: UILabel!
     @IBOutlet weak var threeOptionQuestionsButton: UIButton!

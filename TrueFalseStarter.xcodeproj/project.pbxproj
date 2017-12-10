@@ -12,6 +12,7 @@
 		782792F31FDB82A8007FA9BB /* CorrectAnswer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 782792F11FDB82A8007FA9BB /* CorrectAnswer.wav */; };
 		782792F41FDB82A8007FA9BB /* WrongAnswer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 782792F21FDB82A8007FA9BB /* WrongAnswer.wav */; };
 		782792F61FDB83B1007FA9BB /* SoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782792F51FDB83B1007FA9BB /* SoundCoordinator.swift */; };
+		782793011FDCAD10007FA9BB /* ThreeQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782793001FDCAD10007FA9BB /* ThreeQuestionsVC.swift */; };
 		97093D3C1C913506001275BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3B1C913506001275BC /* AppDelegate.swift */; };
 		97093D3E1C913506001275BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3D1C913506001275BC /* ViewController.swift */; };
 		97093D411C913506001275BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D3F1C913506001275BC /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		782792F11FDB82A8007FA9BB /* CorrectAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CorrectAnswer.wav; path = "../../../../../Downloads/TrueFalseApp-master 12/TrueFalseStarter/TrueFalseStarter/CorrectAnswer.wav"; sourceTree = "<group>"; };
 		782792F21FDB82A8007FA9BB /* WrongAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = WrongAnswer.wav; path = "../../../../../Downloads/TrueFalseApp-master 12/TrueFalseStarter/TrueFalseStarter/WrongAnswer.wav"; sourceTree = "<group>"; };
 		782792F51FDB83B1007FA9BB /* SoundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCoordinator.swift; sourceTree = "<group>"; };
+		782793001FDCAD10007FA9BB /* ThreeQuestionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuestionsVC.swift; sourceTree = "<group>"; };
 		97093D381C913506001275BC /* TrueFalseStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrueFalseStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97093D3B1C913506001275BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97093D3D1C913506001275BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		782792F71FDC993F007FA9BB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97093D3D1C913506001275BC /* ViewController.swift */,
+				782792EF1FDA2CA8007FA9BB /* OptionQuestionsVC.swift */,
+				782793001FDCAD10007FA9BB /* ThreeQuestionsVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		782792FD1FDC99B0007FA9BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				781642341FD7D5A800727179 /* TriviaModel.swift */,
+				782792F51FDB83B1007FA9BB /* SoundCoordinator.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		97093D2F1C913506001275BC = {
 			isa = PBXGroup;
 			children = (
@@ -67,8 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				97093D3B1C913506001275BC /* AppDelegate.swift */,
-				782792EF1FDA2CA8007FA9BB /* OptionQuestionsVC.swift */,
-				97093D3D1C913506001275BC /* ViewController.swift */,
+				782792F71FDC993F007FA9BB /* ViewControllers */,
 				97093D3F1C913506001275BC /* Main.storyboard */,
 				97093D421C913506001275BC /* Assets.xcassets */,
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
@@ -76,8 +96,7 @@
 				97093D521C932116001275BC /* GameSound.wav */,
 				782792F11FDB82A8007FA9BB /* CorrectAnswer.wav */,
 				782792F21FDB82A8007FA9BB /* WrongAnswer.wav */,
-				782792F51FDB83B1007FA9BB /* SoundCoordinator.swift */,
-				781642341FD7D5A800727179 /* TriviaModel.swift */,
+				782792FD1FDC99B0007FA9BB /* Models */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -163,6 +182,7 @@
 				781642351FD7D5A800727179 /* TriviaModel.swift in Sources */,
 				97093D3C1C913506001275BC /* AppDelegate.swift in Sources */,
 				782792F01FDA2CA8007FA9BB /* OptionQuestionsVC.swift in Sources */,
+				782793011FDCAD10007FA9BB /* ThreeQuestionsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

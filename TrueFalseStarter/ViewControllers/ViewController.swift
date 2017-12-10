@@ -283,7 +283,7 @@ class ViewController: UIViewController {
             
             // Game is over
             displayScore()
-            
+            stopTimer()
             nextQuestionB.isHidden = true
         } else {
             
