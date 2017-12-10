@@ -268,6 +268,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice One"/>
+                                        <connections>
+                                            <action selector="checkingAnswer:" destination="psq-LG-hNK" eventType="touchUpInside" id="TPR-kq-JP6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtL-jf-vch">
                                         <rect key="frame" x="0.0" y="260.5" width="300" height="45"/>
@@ -275,6 +278,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice Two"/>
+                                        <connections>
+                                            <action selector="checkingAnswer:" destination="psq-LG-hNK" eventType="touchUpInside" id="ngQ-Mo-hyx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYV-Q2-nGn">
                                         <rect key="frame" x="0.0" y="325.5" width="300" height="45"/>
@@ -282,6 +288,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice Three"/>
+                                        <connections>
+                                            <action selector="checkingAnswer:" destination="psq-LG-hNK" eventType="touchUpInside" id="6zs-bb-uBk"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-8o-Pzx">
                                         <rect key="frame" x="0.0" y="390.5" width="300" height="45.5"/>
@@ -295,6 +304,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Next Question"/>
+                                        <connections>
+                                            <action selector="nextQuestionA" destination="psq-LG-hNK" eventType="touchUpInside" id="qB7-Vo-LvO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xak-cc-tRU">
                                         <rect key="frame" x="0.0" y="521" width="300" height="45"/>
@@ -302,6 +314,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Play Again"/>
+                                        <connections>
+                                            <action selector="playAgains" destination="psq-LG-hNK" eventType="touchUpInside" id="Ox8-gL-20v"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -314,6 +329,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="kZR-AE-nvU" secondAttribute="trailing" constant="22" id="zLd-kt-QYQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="choiceOne" destination="sOw-QV-Ovq" id="QIr-CM-slV"/>
+                        <outlet property="choiceThree" destination="DYV-Q2-nGn" id="IVV-P0-MG7"/>
+                        <outlet property="choiceTwo" destination="MtL-jf-vch" id="ng5-XO-QUa"/>
+                        <outlet property="emptySpace" destination="y5c-8o-Pzx" id="caK-nb-oKC"/>
+                        <outlet property="nextQuestionB" destination="ufg-l5-WRf" id="Sci-o8-Jga"/>
+                        <outlet property="outcomeField" destination="7Xc-bM-0Oj" id="SnE-xA-d8t"/>
+                        <outlet property="playAgainB" destination="xak-cc-tRU" id="Cn8-hF-5Sb"/>
+                        <outlet property="questionsField" destination="Uer-SW-3Th" id="78o-GP-XVr"/>
+                        <outlet property="timerLabel" destination="4Hj-bA-Ha9" id="MW5-6m-pJB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPo-Ot-34M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
