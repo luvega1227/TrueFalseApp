@@ -44,7 +44,33 @@ var footballQuestions: [FootBallTriviaModel] = [
                 choices: [1:"Safety",
                           2: "Center",
                           3: "Linebacker"],
-                answer: 2)
+                answer: 2),
+    FootBallTriviaModel(question: "Which of these positions is one that doesn't get the ball passed to them??",
+                choices: [1:"tight end",
+                            2: "running back",
+                            3: "corner back"],
+                answer: 3),
+    FootBallTriviaModel(question: "Which one of these words means to knock a person down in football?",
+                choices: [1: "Punt",
+                            2: "Interception",
+                            3: "Tackle"],
+                answer: 3),
+    FootBallTriviaModel(question: "This team shares a logo with the University of Georgia",
+                choices: [1:"Washington Redskins",
+                            2: "Arizona Cardinals",
+                            3: "Green Bay Packers"],
+                answer: 3
+    ),
+    FootBallTriviaModel(question: "This team got their name from a poem!",
+                choices: [1:"Chicago Bears",
+                            2: "Detroit Lions",
+                            3: "Baltimore Ravens"],
+                answer: 3),
+    FootBallTriviaModel(question: "This team's logo is the head of a bird",
+                choices: [1:"Philadelphia Eagles",
+                            2: "New York Giants",
+                            3: "Miami Dolphins"],
+                answer: 1)
 ]
 
 
