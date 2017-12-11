@@ -41,14 +41,5 @@ class OptionQuestionsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func threeOptionTrivia(_ sender: Any) {
-        
-        //ViewController.displayQuestion(ViewController).
-        
-        //TriviaModel().
-        
-        
-        return print("3 options")
-    }
     
 }

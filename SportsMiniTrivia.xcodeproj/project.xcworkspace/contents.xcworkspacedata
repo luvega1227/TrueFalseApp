@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TrueFalseStarter.xcodeproj">
+      location = "self:/Users/luisvega/Desktop/ios/Projects/TrueFalseApp copy/SportsMiniTrivia.xcodeproj">
    </FileRef>
 </Workspace>

@@ -46,8 +46,6 @@ class ViewController: UIViewController {
     
     
     
-    
-    
     // MARK: Life Cycle Methods
     
     override func viewDidLoad() {
@@ -59,10 +57,16 @@ class ViewController: UIViewController {
         displayQuestion()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        stopTimer()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     //MARK: Game Setup
     func initialAppSetUp() {
@@ -110,10 +114,10 @@ class ViewController: UIViewController {
         choiceFour.alpha = 1.0
         
         // Buttons Alpha color
-        choiceOne.backgroundColor = UIColor.blue
-        choiceTwo.backgroundColor = UIColor.blue
-        choiceThree.backgroundColor = UIColor.blue
-        choiceFour.backgroundColor = UIColor.blue
+        choiceOne.backgroundColor = UIColor.lightText
+        choiceTwo.backgroundColor = UIColor.lightText
+        choiceThree.backgroundColor = UIColor.lightText
+        choiceFour.backgroundColor = UIColor.lightText
         
         generateQuestionsToIndex()
     }

@@ -63,9 +63,8 @@
                                         <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="3-Option Quesstions"/>
+                                        <state key="normal" title="Foot Ball Questions"/>
                                         <connections>
-                                            <action selector="threeOptionTrivia:" destination="6Np-Pm-XbR" eventType="touchUpInside" id="6k8-IY-FeY"/>
                                             <segue destination="psq-LG-hNK" kind="show" id="4EK-22-2Jw"/>
                                         </connections>
                                     </button>
@@ -74,7 +73,7 @@
                                         <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="4-Option Questions"/>
+                                        <state key="normal" title="Basketball Questions"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="8Zy-gO-x6x"/>
                                         </connections>
@@ -203,7 +202,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.031372549019607843" green="0.16862745098039217" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8Hu-ko-F36" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RjJ-te-yBf"/>
                             <constraint firstItem="8Hu-ko-F36" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="VAs-KC-Kx3"/>
@@ -264,7 +263,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-QV-Ovq">
                                         <rect key="frame" x="0.0" y="195.5" width="300" height="45"/>
-                                        <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice One"/>
@@ -274,7 +273,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtL-jf-vch">
                                         <rect key="frame" x="0.0" y="260.5" width="300" height="45"/>
-                                        <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice Two"/>
@@ -284,7 +283,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYV-Q2-nGn">
                                         <rect key="frame" x="0.0" y="325.5" width="300" height="45"/>
-                                        <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Choice Three"/>
@@ -321,7 +320,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.031372549020000001" green="0.16862745100000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kZR-AE-nvU" firstAttribute="top" secondItem="nUd-Do-RtV" secondAttribute="bottom" constant="8" id="Afx-n4-tcm"/>
                             <constraint firstItem="J1p-ng-GYn" firstAttribute="top" relation="lessThanOrEqual" secondItem="kZR-AE-nvU" secondAttribute="bottom" constant="29" id="h0f-89-BmV"/>

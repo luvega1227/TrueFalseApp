@@ -55,6 +55,10 @@ class ThreeQuestionsVC: UIViewController {
         displayQuestion()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        stopTimer()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,11 +106,11 @@ class ThreeQuestionsVC: UIViewController {
         choiceThree.alpha = 1.0
         
         // Buttons Alpha color
-        choiceOne.backgroundColor = UIColor.blue
-        choiceTwo.backgroundColor = UIColor.blue
-        choiceThree.backgroundColor = UIColor.blue
+        choiceOne.backgroundColor = UIColor.lightText
+        choiceTwo.backgroundColor = UIColor.lightText
+        choiceThree.backgroundColor = UIColor.lightText
         
-        mathGenerateQuestionsToIndex()
+        footballGenerateQuestionsToIndex()
     }
     
     
@@ -114,15 +118,15 @@ class ThreeQuestionsVC: UIViewController {
     // MARK: Display fucntions
     
     func displayQuestion() {
-        mathSelectNextQuestions()
+        footballSelectNextQuestions()
         
         // Question Field label displaying question
-        questionsField.text = mathQuestions[mathIndexOfQuestions].question
+        questionsField.text = footballQuestions[footballIndexOfQuestions].question
         
         // Display choices
-        choiceOne.setTitle(mathQuestions[mathIndexOfQuestions].choices[1], for: .normal)
-        choiceTwo.setTitle(mathQuestions[mathIndexOfQuestions].choices[2], for: .normal)
-        choiceThree.setTitle(mathQuestions[mathIndexOfQuestions].choices[3], for: .normal)
+        choiceOne.setTitle(footballQuestions[footballIndexOfQuestions].choices[1], for: .normal)
+        choiceTwo.setTitle(footballQuestions[footballIndexOfQuestions].choices[2], for: .normal)
+        choiceThree.setTitle(footballQuestions[footballIndexOfQuestions].choices[3], for: .normal)
         
         playAgainB.isHidden = true
         
@@ -158,7 +162,7 @@ class ThreeQuestionsVC: UIViewController {
         
         
         // The correct answer from the Trivia Model
-        let correctAnswer = mathQuestions[mathIndexOfQuestions].answer
+        let correctAnswer = footballQuestions[footballIndexOfQuestions].answer
         
         // If user matches choice# and correctAnswer...
         if (sender === choiceOne && correctAnswer == 1) || (sender === choiceTwo && correctAnswer == 2) || (sender === choiceThree && correctAnswer == 3) {
@@ -345,7 +349,7 @@ class ThreeQuestionsVC: UIViewController {
             
             // Highlighting the answer when user selected the wrong answer
             
-            let correctAnswer = mathQuestions[mathIndexOfQuestions].answer
+            let correctAnswer = footballQuestions[footballIndexOfQuestions].answer
             
             //choiceOne
             if ((choiceOne != nil) && correctAnswer == 1) {
