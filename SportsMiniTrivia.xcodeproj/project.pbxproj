@@ -25,8 +25,8 @@
 /* Begin PBXFileReference section */
 		781642341FD7D5A800727179 /* TriviaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaModel.swift; sourceTree = "<group>"; };
 		782792EF1FDA2CA8007FA9BB /* OptionQuestionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionQuestionsVC.swift; sourceTree = "<group>"; };
-		782792F11FDB82A8007FA9BB /* CorrectAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CorrectAnswer.wav; path = "../../../../../Downloads/TrueFalseApp-master 12/TrueFalseStarter/TrueFalseStarter/CorrectAnswer.wav"; sourceTree = "<group>"; };
-		782792F21FDB82A8007FA9BB /* WrongAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = WrongAnswer.wav; path = "../../../../../Downloads/TrueFalseApp-master 12/TrueFalseStarter/TrueFalseStarter/WrongAnswer.wav"; sourceTree = "<group>"; };
+		782792F11FDB82A8007FA9BB /* CorrectAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectAnswer.wav; sourceTree = "<group>"; };
+		782792F21FDB82A8007FA9BB /* WrongAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WrongAnswer.wav; sourceTree = "<group>"; };
 		782792F51FDB83B1007FA9BB /* SoundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCoordinator.swift; sourceTree = "<group>"; };
 		782793001FDCAD10007FA9BB /* ThreeQuestionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuestionsVC.swift; sourceTree = "<group>"; };
 		786456901FDE4CBF003F83AD /* FootBallTriviaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootBallTriviaModel.swift; sourceTree = "<group>"; };
