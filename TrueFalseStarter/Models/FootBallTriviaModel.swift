@@ -63,9 +63,18 @@ func footballGenerateQuestionsToIndex() {
     }
 }
 
-// Selects a question to index and removes it temporarily from the index
-func footballSelectNextQuestions() {
+var footballLastRandomQuestion = -1
+
+func footballSelectNextQuestions() -> Any {
     footballIndexOfQuestions = footballQuestionsToIndex.remove(at: GKRandomSource.sharedRandom().nextInt(upperBound: footballQuestionsToIndex.count))
+    
+    if footballIndexOfQuestions == footballLastRandomQuestion {
+        return footballSelectNextQuestions()
+    } else {
+        footballLastRandomQuestion = footballIndexOfQuestions
+        return footballQuestions[footballIndexOfQuestions]
+    }
 }
+
 
 

@@ -46,11 +46,35 @@ var questions: [TriviaModel] = [
                           4: "The Oracle Arena"],
                 answer: 4),
     TriviaModel(question: "The club currently known as the Houston Rockets originated in....",
-                choices: [1:"Toledo, OH",
+                choices: [1: "Toledo, OH",
                           2: "San Diego, CA",
                           3: "Huntsville, AL",
                           4: "They have always been in Houston"],
-                answer: 2)
+                answer: 2),
+    TriviaModel(question: "Which of the following players is the son of Jimmy Walker?",
+                choices: [1: "Samaki Walker",
+                          2: "Antoine Walker",
+                          3: "Tony Dumas",
+                          4: "Jalen Rose"],
+                answer: 4),
+    TriviaModel(question: "Which team was the first to win back to back NBA titles?",
+                choices: [1: "Lakers",
+                          2: "Celtics",
+                          3: "Rockets",
+                          4: "Bulls"],
+                answer: 1),
+    TriviaModel(question: "Which of these played with Tim Duncan?",
+                choices: [1: "Jerry Stackhouse",
+                          2: "Ken Johnson",
+                          3: "Jeff Foster",
+                          4: "Loren Woods"],
+                answer: 4),
+    TriviaModel(question: "The Washington Wizards has previously been known as all of the following EXCEPT:",
+                choices: [1: "Chicago Packers",
+                          2: "Chicago Zephyrs",
+                          3: "Baltimore Bullets",
+                          4: "Washington Senators"],
+                answer: 4)
 ]
 
 
@@ -70,7 +94,20 @@ func generateQuestionsToIndex() {
 }
 
 // Selects a question to index and removes it temporarily from the index
-func selectNextQuestions() {
+
+var lastRandomQuestion = -1
+
+func selectNextQuestions() -> Any {
     indexOfQuestions = questionsToIndex.remove(at: GKRandomSource.sharedRandom().nextInt(upperBound: questionsToIndex.count))
+    
+    if indexOfQuestions == lastRandomQuestion {
+        return selectNextQuestions()
+    } else {
+        lastRandomQuestion = indexOfQuestions
+        return questions[indexOfQuestions]
+    }
 }
+
+
+
 
