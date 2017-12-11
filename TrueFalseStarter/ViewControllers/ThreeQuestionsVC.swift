@@ -25,7 +25,6 @@ class ThreeQuestionsVC: UIViewController {
     
     // Sound
     let soundCoordinator = SoundCoordinator()
-    //    var gameSound: SystemSoundID = 0
     
     // Labels
     @IBOutlet weak var questionsField: UILabel!
@@ -107,7 +106,7 @@ class ThreeQuestionsVC: UIViewController {
         choiceTwo.backgroundColor = UIColor.blue
         choiceThree.backgroundColor = UIColor.blue
         
-        generateQuestionsToIndex()
+        mathGenerateQuestionsToIndex()
     }
     
     
@@ -115,15 +114,15 @@ class ThreeQuestionsVC: UIViewController {
     // MARK: Display fucntions
     
     func displayQuestion() {
-        selectNextQuestions()
+        mathSelectNextQuestions()
         
         // Question Field label displaying question
-        questionsField.text = questions[indexOfQuestions].question
+        questionsField.text = mathQuestions[mathIndexOfQuestions].question
         
         // Display choices
-        choiceOne.setTitle(questions[indexOfQuestions].choices[1], for: .normal)
-        choiceTwo.setTitle(questions[indexOfQuestions].choices[2], for: .normal)
-        choiceThree.setTitle(questions[indexOfQuestions].choices[3], for: .normal)
+        choiceOne.setTitle(mathQuestions[mathIndexOfQuestions].choices[1], for: .normal)
+        choiceTwo.setTitle(mathQuestions[mathIndexOfQuestions].choices[2], for: .normal)
+        choiceThree.setTitle(mathQuestions[mathIndexOfQuestions].choices[3], for: .normal)
         
         playAgainB.isHidden = true
         
@@ -140,7 +139,7 @@ class ThreeQuestionsVC: UIViewController {
         playAgainB.isHidden = false
         
         // Text Display when you finish trivia
-        questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionsField.text = "Way to go!\n\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
     }
     
     
@@ -159,7 +158,7 @@ class ThreeQuestionsVC: UIViewController {
         
         
         // The correct answer from the Trivia Model
-        let correctAnswer = questions[indexOfQuestions].answer
+        let correctAnswer = mathQuestions[mathIndexOfQuestions].answer
         
         // If user matches choice# and correctAnswer...
         if (sender === choiceOne && correctAnswer == 1) || (sender === choiceTwo && correctAnswer == 2) || (sender === choiceThree && correctAnswer == 3) {
@@ -346,7 +345,7 @@ class ThreeQuestionsVC: UIViewController {
             
             // Highlighting the answer when user selected the wrong answer
             
-            let correctAnswer = questions[indexOfQuestions].answer
+            let correctAnswer = mathQuestions[mathIndexOfQuestions].answer
             
             //choiceOne
             if ((choiceOne != nil) && correctAnswer == 1) {
@@ -413,3 +412,4 @@ class ThreeQuestionsVC: UIViewController {
     }
 
 }
+

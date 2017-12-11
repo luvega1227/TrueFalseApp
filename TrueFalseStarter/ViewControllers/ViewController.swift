@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     
     // Sound
     let soundCoordinator = SoundCoordinator()
-//    var gameSound: SystemSoundID = 0
     
     // Labels
     @IBOutlet weak var questionsField: UILabel!
@@ -53,10 +52,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadGameStartSound()
         
         // Start game
-//        playGameStartSound()
         soundCoordinator.playGameStartSound()
         initialAppSetUp()
         displayQuestion()
@@ -152,7 +149,7 @@ class ViewController: UIViewController {
         playAgainB.isHidden = false
         
         // Text Display when you finish trivia
-        questionsField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionsField.text = "Way to go!\n\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
     }
     
     
@@ -450,16 +447,5 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
- 
-    
-//    func loadGameStartSound() {
-//        let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-//        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
-//        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
-//    }
-//
-//    func playGameStartSound() {
-//        AudioServicesPlaySystemSound(gameSound)
-//    }
 }
 
